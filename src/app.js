@@ -127,6 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderMatches('all');
             } else {
                 console.error("Failed to fetch matches");
+                emptyState.style.display = 'block';
+                emptyState.innerHTML = '<h3>Failed to load matches</h3><p>Please check your network connection or disable ad-blockers.</p>';
             }
         });
     }
