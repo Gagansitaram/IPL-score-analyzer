@@ -49,7 +49,7 @@ class PlayerService {
         };
 
         if (!this.playerStats) {
-            fetch('/src/services/player_stats.json')
+            fetch('src/services/player_stats.json')
                 .then(res => res.json())
                 .then(stats => {
                     this.playerStats = stats;
