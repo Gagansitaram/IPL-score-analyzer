@@ -22,8 +22,8 @@
 }
 
 body {
-    background: url('ipl_background.png') no-repeat center center fixed, linear-gradient(-45deg, #0f172a, #1e1b4b, #111827, #050b14);
-    background-size: cover, 400% 400%;
+    background: linear-gradient(-45deg, #0f172a, #1a103c, #0b132b, #050b14);
+    background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     color: var(--text-primary);
     overflow-x: hidden;
