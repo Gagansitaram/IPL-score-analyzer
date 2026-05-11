@@ -159,10 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselContainer.appendChild(cardElement);
         });
 
-        // Render List (Grouped by Series)
+        // Render List grouped by League
         const groupedMatches = {};
         listMatches.forEach(match => {
-            const league = match.leagueName || 'Other Matches';
+            const league = match.leagueName || "Other Matches";
             if (!groupedMatches[league]) {
                 groupedMatches[league] = [];
             }
@@ -170,13 +170,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         for (const league in groupedMatches) {
-            // Create league header
+            // Create Header
             const header = document.createElement('div');
-            header.className = 'league-header';
+            header.className = 'section-subtitle';
+            header.style.margin = '1.5rem 1rem 0.5rem 1rem';
             header.textContent = league;
             matchesContainer.appendChild(header);
 
-            // Render matches for this league
+            // Render Matches in this league
             groupedMatches[league].forEach(match => {
                 const cardElement = matchCardRenderer.render(match, true, openMatchModal);
                 matchesContainer.appendChild(cardElement);
