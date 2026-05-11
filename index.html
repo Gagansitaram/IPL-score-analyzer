@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CricPulse - Live Cricket Scores & IPL Stats</title>
+    <meta name="description" content="Get live cricket scores, ball-by-ball updates, and detailed IPL player statistics. Your ultimate cricket companion.">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <!-- Top App Header -->
+    <header class="app-header">
+        <div class="logo-container">
+            <div class="logo-icon">🏏</div>
+            <div class="logo-text">CRIC HUB</div>
+        </div>
+        <div id="statusIndicator" class="live-status-pill">
+            <span class="pulse-dot"></span>
+            <span class="text">Live</span>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+        
+        <!-- Home / Matches View -->
+        <div id="viewHome" class="view-section active">
+            
+            <!-- Live matches horizontal carousel -->
+            <section class="live-carousel-section">
+                <h2 class="section-title">Live & Upcoming</h2>
+                <div class="horizontal-scroll" id="carouselContainer">
+                    <!-- Carousel cards injected here -->
+                </div>
+            </section>
+
+            <!-- All Matches List -->
+            <section class="matches-list-section">
+                <div class="section-header">
+                    <h2 class="section-title">All Matches</h2>
+                    <div class="filter-pills">
+                        <span class="filter-pill active" data-filter="all">All</span>
+                        <span class="filter-pill" data-filter="international">INTL</span>
+                        <span class="filter-pill" data-filter="franchise">T20</span>
+                    </div>
+                </div>
+                <div class="matches-list" id="matchesContainer">
+                    <!-- List cards injected here -->
+                </div>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <div class="empty-icon">🔍</div>
+                    <p>No matches available.</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- Player Search View -->
+        <div id="viewPlayers" class="view-section" style="display: none;">
+            <div class="search-header">
+                <h2>Player Profile</h2>
+                <div class="search-bar-container">
+                    <input type="text" id="playerSearchInput" class="app-search-input" placeholder="Search any player (e.g. Virat Kohli)" autocomplete="off">
+                    <button id="playerSearchBtn" class="app-search-btn">🔍</button>
+                </div>
+                <div id="iplDataStatus" class="status-msg" style="display: none;">Searching...</div>
+            </div>
+
+            <!-- Player Profile Card -->
+            <div id="playerProfileCard" class="crex-player-card" style="display: none;">
+                <div class="card-cover"></div>
+                <div class="card-body">
+                    <img src="" alt="avatar" id="profileAvatarImg" class="player-avatar" style="display: none;">
+                    <div class="player-avatar-fallback" id="profileAvatarFallback">👤</div>
+                    <h2 id="profileName" class="player-name">Player Name</h2>
+                    <p id="profileRole" class="player-role">-</p>
+
+                    <div class="stats-table-container">
+                        <table class="stats-table">
+                            <thead>
+                                <tr>
+                                    <th>Format</th>
+                                    <th>Matches</th>
+                                    <th>Runs</th>
+                                    <th>Avg</th>
+                                    <th>SR</th>
+                                    <th>Wickets</th>
+                                    <th>Econ</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th colspan="7" style="background: rgba(255,255,255,0.05); text-align: left; padding-left: 1rem;">International</th>
+                                </tr>
+                                <tr>
+                                    <td>Test</td>
+                                    <td id="testMatches">-</td>
+                                    <td id="testRuns">-</td>
+                                    <td id="testAvg">-</td>
+                                    <td id="testSR">-</td>
+                                    <td id="testWickets">-</td>
+                                    <td id="testEcon">-</td>
+                                </tr>
+                                <tr>
+                                    <td>ODI</td>
+                                    <td id="odiMatches">-</td>
+                                    <td id="odiRuns">-</td>
+                                    <td id="odiAvg">-</td>
+                                    <td id="odiSR">-</td>
+                                    <td id="odiWickets">-</td>
+                                    <td id="odiEcon">-</td>
+                                </tr>
+                                <tr>
+                                    <td>T20I</td>
+                                    <td id="t20Matches">-</td>
+                                    <td id="t20Runs">-</td>
+                                    <td id="t20Avg">-</td>
+                                    <td id="t20SR">-</td>
+                                    <td id="t20Wickets">-</td>
+                                    <td id="t20Econ">-</td>
+                                </tr>
+                                <tr>
+                                    <th colspan="7" style="background: rgba(255,255,255,0.05); text-align: left; padding-left: 1rem;">Domestic / Franchise</th>
+                                </tr>
+                                <tr>
+                                    <td>First Class</td>
+                                    <td id="fcMatches">-</td>
+                                    <td id="fcRuns">-</td>
+                                    <td id="fcAvg">-</td>
+                                    <td id="fcSR">-</td>
+                                    <td id="fcWickets">-</td>
+                                    <td id="fcEcon">-</td>
+                                </tr>
+                                <tr>
+                                    <td>List A</td>
+                                    <td id="listMatches">-</td>
+                                    <td id="listRuns">-</td>
+                                    <td id="listAvg">-</td>
+                                    <td id="listSR">-</td>
+                                    <td id="listWickets">-</td>
+                                    <td id="listEcon">-</td>
+                                </tr>
+                                <tr>
+                                    <td>T20</td>
+                                    <td id="domT20Matches">-</td>
+                                    <td id="domT20Runs">-</td>
+                                    <td id="domT20Avg">-</td>
+                                    <td id="domT20SR">-</td>
+                                    <td id="domT20Wickets">-</td>
+                                    <td id="domT20Econ">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="player-metadata-section">
+                        <div class="section-subtitle">Teams Played For</div>
+                        <div class="teams-list" id="profileTeams">
+                            <!-- Team chips will be inserted here -->
+                        </div>
+                    </div>
+
+                    <div class="player-metadata-section">
+                        <div class="section-subtitle">Recent Series</div>
+                        <div class="series-list" id="profileSeries">
+                            <!-- Series items will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="playerEmptyState" class="empty-state">
+                <div class="empty-icon">🏏</div>
+                <p>Search for a player to view their live career stats.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" id="navHome">
+            <div class="nav-icon">🏠</div>
+            <span class="nav-label">Matches</span>
+        </div>
+        <div class="nav-item" id="navPlayers">
+            <div class="nav-icon">👤</div>
+            <span class="nav-label">Players</span>
+        </div>
+    </nav>
+
+    <!-- Match Center Modal -->
+    <div id="matchModal" class="match-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="closeModalBtn" class="close-btn">←</button>
+                <div class="modal-title">Match Center</div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Detailed match info injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="src/services/LiveService.js?v=15"></script>
+    <script src="src/services/PlayerService.js?v=15"></script>
+    <script src="src/components/MatchCard.js?v=15"></script>
+    <script src="src/app.js?v=15"></script>
+</body>
+</html>

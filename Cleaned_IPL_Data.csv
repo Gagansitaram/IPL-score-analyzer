@@ -1,0 +1,20 @@
+match_id,season,batting_team,bowling_team,over,ball,batsman,runs_off_bat,extras,venue,innings
+1,2020,MI,CSK,0,1,RG Sharma,4,0,Wankhede,1
+1,2020,MI,CSK,0,2,RG Sharma,6,0,Wankhede,1
+1,2020,MI,CSK,15,1,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,15,2,KA Pollard,4,0,Wankhede,1
+1,2020,MI,CSK,16,1,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,16,2,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,16,3,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,16,4,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,16,5,KA Pollard,6,0,Wankhede,1
+1,2020,MI,CSK,16,6,KA Pollard,6,0,Wankhede,1
+2,2021,RCB,DC,0,1,V Kohli,4,0,Chinnaswamy,1
+2,2021,RCB,DC,1,1,AB de Villiers,6,0,Chinnaswamy,1
+2,2021,RCB,DC,18,1,AB de Villiers,6,0,Chinnaswamy,1
+2,2021,RCB,DC,18,2,AB de Villiers,6,0,Chinnaswamy,1
+2,2021,RCB,DC,18,3,AB de Villiers,6,0,Chinnaswamy,1
+3,2022,GT,RR,0,1,Shubman Gill,4,0,Narendra Modi Stadium,1
+3,2022,GT,RR,19,1,Hardik Pandya,6,0,Narendra Modi Stadium,1
+3,2022,GT,RR,19,2,Hardik Pandya,6,0,Narendra Modi Stadium,1
+3,2022,GT,RR,19,3,Hardik Pandya,6,0,Narendra Modi Stadium,1
