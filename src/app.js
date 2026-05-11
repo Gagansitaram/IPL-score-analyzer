@@ -159,11 +159,29 @@ document.addEventListener('DOMContentLoaded', () => {
             carouselContainer.appendChild(cardElement);
         });
 
-        // Render List
+        // Render List (Grouped by Series)
+        const groupedMatches = {};
         listMatches.forEach(match => {
-            const cardElement = matchCardRenderer.render(match, true, openMatchModal);
-            matchesContainer.appendChild(cardElement);
+            const league = match.leagueName || 'Other Matches';
+            if (!groupedMatches[league]) {
+                groupedMatches[league] = [];
+            }
+            groupedMatches[league].push(match);
         });
+
+        for (const league in groupedMatches) {
+            // Create league header
+            const header = document.createElement('div');
+            header.className = 'league-header';
+            header.textContent = league;
+            matchesContainer.appendChild(header);
+
+            // Render matches for this league
+            groupedMatches[league].forEach(match => {
+                const cardElement = matchCardRenderer.render(match, true, openMatchModal);
+                matchesContainer.appendChild(cardElement);
+            });
+        }
     }
 
     // Filter Pills Logic

@@ -129,6 +129,15 @@ body {
     color: var(--text-primary);
 }
 
+.league-header {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 1.5rem 1rem 0.75rem 1rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--accent-blue);
+}
+
 .section-header {
     display: flex;
     justify-content: space-between;
